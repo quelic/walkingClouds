@@ -1,19 +1,19 @@
 /******************************************************************
- * 
+ *
  * WalkingClowds, by Quelic Berga
- * 
- * 
- * This sketch becomes nicer after some 15 secs of watching, 
- * it is, to me, like watching colorful clouds. Slower speed of the 
+ *
+ *
+ * This sketch becomes nicer after some 15 secs of watching,
+ * it is, to me, like watching colorful clouds. Slower speed of the
  * random walkers allow imagination to go even further.
- * 
+ *
  * It is inspired by the 1st lecture by Daniel Shiffman in the course
  * the nature of code, available on kadenze.com during may'16
- * 
+ *
  * It is my take on the RandomWalker assignment 1.
- * 
+ *
  * quelic@caotic.net
- * 
+ *
  *****************************************************************/
 
 // setting up some variables, for this sketch adding an "oldPos" to remember last position.
@@ -21,14 +21,22 @@ var pos;
 var oldPos;
 var vel;
 var acc;
+var canvas;
 
 function setup() {
-  createCanvas(800, 800);
+  var canvas = createCanvas(800, 800);
+
+// Move the canvas so it's inside our <div id="sketch-holder">.
+  canvas.parent('sketch-holder');
+
+
+
+
   // creating the 3 lights RGB objects by calling Light() constructor.
   seedRed = new Light();
   seedGreen = new Light();
   seedBlue = new Light();
-  //Setting up backgorund and type of sroke endings.  
+  //Setting up backgorund and type of sroke endings.
   strokeCap(PROJECT);
   background(0);
 }
@@ -72,14 +80,14 @@ function Light() { // The object is a line that walks around the scene
       this.pos.x = width;
 
     }
-    // we store the values of position to oldPos x and y before updating them to new ones. 
+    // we store the values of position to oldPos x and y before updating them to new ones.
     this.oldPos.x = this.pos.x;
     this.oldPos.y = this.pos.y;
-    
+
     // we give moderate values of acceleration
     this.acc.x = random(-.5, .5);
     this.acc.y = random(-.5, .5);
-    
+
     // We stop acceleration if it increases too much to avoid huge velocities
     if (abs(this.vel.x) > 10) {
       this.vel.x = 0;
@@ -87,7 +95,7 @@ function Light() { // The object is a line that walks around the scene
     if (abs(this.vel.y) > 10) {
       this.vel.y = 0;
     }
-    // we add to position the velocity that is a sum of the acceleration. 
+    // we add to position the velocity that is a sum of the acceleration.
     this.vel.add(this.acc);
     this.pos.add(this.vel);
   }

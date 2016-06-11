@@ -1,0 +1,22 @@
+/* style.css */
+
+html, body {
+  height: 100%;
+  color: #666666;
+
+}
+
+body {
+background: #000000;
+display: flex;
+/* This centers our sketch horizontally. */
+justify-content: center;
+/* This centers our sketch vertically. */
+align-items: center;
+
+  }
+
+h1 {
+  font-family: helvetica, arial;
+color: #ffffff;
+}
